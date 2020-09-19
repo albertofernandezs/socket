@@ -4,6 +4,9 @@ package py.una.server.tcp;
 import java.io.*;
 import java.net.*;
 
+import py.una.entidad.Persona;
+import py.una.entidad.PersonaJSON;
+
 public class TCPClient {
 
     public static void main(String[] args) throws IOException {
@@ -30,20 +33,33 @@ public class TCPClient {
         
         BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
         String fromServer;
-        String fromUser;
+        String fromUser,nombre;
+        Long id;
+        int opcion;
+        
         //pasarle el objeto persona al servidor en formato Json
+        System.out.println("Ingrese su id: ");
+        id=Long.parseLong(stdIn.readLine());
+        System.out.println("Ingrese su nombre: ");
+        nombre=stdIn.readLine();
+        Persona cliente= new Persona(id,nombre,0,true);
+        fromUser= PersonaJSON.objetoString(cliente);
+        out.println(fromUser);
+        
         while ((fromServer = in.readLine()) != null) {
-            System.out.println("Servidor: " + fromServer);
-            if (fromServer.equals("Bye")) {
-                break;
-            }
-
-            fromUser = stdIn.readLine();
-            if (fromUser != null) {
-                System.out.println("Cliente: " + fromUser);
-
-                //escribimos al servidor
+        	SubMenu();
+        	System.out.println(fromServer);
+            opcion = Integer.parseInt(stdIn.readLine());
+            if (opcion==5) {
+            	cliente.setOperacion(5);
+            	fromUser= PersonaJSON.objetoString(cliente);
                 out.println(fromUser);
+            	break;
+            }else if(opcion==1) {
+            	cliente.setOperacion(1);
+            	fromUser= PersonaJSON.objetoString(cliente);
+                out.println(fromUser);
+                
             }
         }
 
@@ -51,5 +67,10 @@ public class TCPClient {
         in.close();
         stdIn.close();
         unSocket.close();
+    }
+    
+    public static void SubMenu() {
+    	System.out.println("1- Listar personas ");
+    	System.out.println("5- Cerrar Sesion ");
     }
 }

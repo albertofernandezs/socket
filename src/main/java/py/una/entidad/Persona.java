@@ -1,33 +1,32 @@
 package py.una.entidad;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.net.Socket;
 public class Persona {
 
-	Long cedula;
+	Long id;
 	String nombre;
-	String apellido;
+	Integer operacion;
+	boolean conectado;
+	Socket socket = null;
 	
-	List<String> asignaturas;
+
 	
-	public Persona(){
-		asignaturas = new ArrayList<String>();
+	public Persona(){	
+	}
+	public Persona(Long id, String nombre, Integer operacion, boolean conectado){
+		this.id = id;
+		this.nombre = nombre;
+		this.operacion=operacion;
+		this.conectado=conectado;
 	}
 
-	public Persona(Long pcedula, String pnombre, String papellido){
-		this.cedula = pcedula;
-		this.nombre = pnombre;
-		this.apellido = papellido;
-		
-		asignaturas = new ArrayList<String>();
-	}
-	
-	public Long getCedula() {
-		return cedula;
+	public Long getId() {
+		return id;
 	}
 
-	public void setCedula(Long cedula) {
-		this.cedula = cedula;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -38,19 +37,27 @@ public class Persona {
 		this.nombre = nombre;
 	}
 
-	public String getApellido() {
-		return apellido;
+	public Integer getOperacion() {
+		return operacion;
 	}
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setOperacion(Integer operacion) {
+		this.operacion = operacion;
 	}
 
-	public List<String> getAsignaturas() {
-		return asignaturas;
+	public boolean getConectado() {
+		return conectado;
 	}
 
-	public void setAsignaturas(List<String> asignaturas) {
-		this.asignaturas = asignaturas;
+	public void setConectado(boolean conectado) {
+		this.conectado = conectado;
 	}
+	public java.net.Socket getSocket() {
+		return socket;
+	}
+	public void setSocket(java.net.Socket socket) {
+		this.socket = socket;
+	}
+	
+	
 }
