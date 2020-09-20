@@ -19,7 +19,7 @@ public class TCPMultiServer {
 	List<TCPServerHilo> hilosClientes; //almacenar los hilos (no se utiliza en el ejemplo, se deja para que el alumno lo utilice)
 	List<Persona> usuarios; //almacenar una lista de usuarios (no se utiliza, se deja para que el alumno lo utilice)
 	//crear un hash map de id persona y su socket
-	Map<Long, Socket> clientes = new HashMap<Long, Socket> ();
+	Map<Long, Persona> clientes = new HashMap<Long, Persona> ();
     public void ejecutar() throws IOException {
         ServerSocket serverSocket = null;
 

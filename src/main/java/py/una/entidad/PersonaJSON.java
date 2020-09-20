@@ -24,7 +24,8 @@ public class PersonaJSON {
         obj.put("id", p.getId());
         obj.put("nombre", p.getNombre());
         obj.put("operacion", (Integer)p.getOperacion());
-        obj.put("conectado", p.getConectado());
+        obj.put("disponible", p.getDisponible());
+        obj.put("destino", p.getDestino());
 
 
         return obj.toJSONString();
@@ -45,7 +46,12 @@ public class PersonaJSON {
         
         Long op = (Long) jsonObject.get("operacion");
         p.setOperacion(op.intValue());
-        p.setConectado((boolean)jsonObject.get("conectado"));
+        
+        p.setDisponible((boolean)jsonObject.get("disponible"));
+        
+        p.setDestino((String)jsonObject.get("destino"));
+        
+        
         return p;
 	}
 

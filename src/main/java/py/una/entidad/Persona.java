@@ -7,18 +7,20 @@ public class Persona {
 	Long id;
 	String nombre;
 	Integer operacion;
-	boolean conectado;
+	boolean disponible;
 	Socket socket = null;
+	String destino;
 	
 
 	
 	public Persona(){	
 	}
-	public Persona(Long id, String nombre, Integer operacion, boolean conectado){
+	public Persona(Long id, String nombre, Integer operacion, boolean disponible, String destino){
 		this.id = id;
 		this.nombre = nombre;
 		this.operacion=operacion;
-		this.conectado=conectado;
+		this.disponible=disponible;
+		this.destino=destino;
 	}
 
 	public Long getId() {
@@ -45,12 +47,12 @@ public class Persona {
 		this.operacion = operacion;
 	}
 
-	public boolean getConectado() {
-		return conectado;
+	public boolean getDisponible() {
+		return disponible;
 	}
 
-	public void setConectado(boolean conectado) {
-		this.conectado = conectado;
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
 	}
 	public java.net.Socket getSocket() {
 		return socket;
@@ -58,6 +60,16 @@ public class Persona {
 	public void setSocket(java.net.Socket socket) {
 		this.socket = socket;
 	}
+	public String getDestino() {
+		return destino;
+	}
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
+	
+	
+	
+	
 	
 	
 }
