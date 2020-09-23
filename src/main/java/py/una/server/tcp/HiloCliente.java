@@ -20,10 +20,20 @@ public class HiloCliente extends Thread{
 	
 	@Override
 	public void run() {
-		
+		String[] string;
 		while(continuar) {
 			try {
-				System.out.println(this.in.readLine());
+				String mensaje = this.in.readLine();
+				if(mensaje.contains("solicitud.")) {
+					string = mensaje.split(".");
+					for(String s : string) {
+						System.out.println(s);
+					}
+					//mensaje = string[1];
+					System.out.println("Desea recibir un mensaje de "+ mensaje);
+				}else {
+					System.out.println(mensaje);
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -9,7 +9,7 @@ import py.una.entidad.PersonaJSON;
 
 public class TCPClient {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         Socket unSocket = null;
         PrintWriter out = null;
@@ -45,12 +45,15 @@ public class TCPClient {
         Persona cliente= new Persona(id,nombre,0,true, "");
         fromUser= PersonaJSON.objetoString(cliente);
         out.println(fromUser);
+        HiloCliente hilo= new HiloCliente(in);
+        //TODO: crear hilo de recepcion
         
         while (true) {
         	//(fromServer = in.readLine()) != null
         	SubMenu();
         	//System.out.println(fromServer);
             opcion = Integer.parseInt(stdIn.readLine());
+            System.out.println("holi"+opcion);  
             if (opcion==4) {
             	cliente.setOperacion(4);
             	fromUser= PersonaJSON.objetoString(cliente);
@@ -63,18 +66,28 @@ public class TCPClient {
                 fromServer=in.readLine();
                 System.out.println(fromServer);
             }else if(opcion==2) {
-            	System.out.println("A quien queres llamar? ");
+            	System.out.println("A quien queres llamar? ");            	
             	destino=stdIn.readLine();
             	cliente.setOperacion(2);
-            	cliente.setDestino(destino); //falta validar si existe el destino
+            	cliente.setDestino(destino); //TODO:falta validar si existe el destino
             	fromUser= PersonaJSON.objetoString(cliente);
             	out.println(fromUser);
             	
             	clearScreen();
             	
+            	System.out.println("Esperando respuesta: ");
+            	mensaje=in.readLine();
+            	if(!mensaje.equals("Aceptado")) {
+            		System.out.println("Llamada rechazada");
+            		
+            		Thread.sleep(2000);
+            		continue;
+            	}
+            	
+            	//TODO: Un ciclo donde el emisor espera que el  destino conteste la llamada
+            	
             	System.out.println("Estas en una llamada con: "+destino+", diga 'chau' para colgar la llamada");
             	mensaje=stdIn.readLine();
-            	HiloCliente hilo= new HiloCliente(in);
             	while(!mensaje.equals("chau")){
             		out.println(mensaje);
             		mensaje=stdIn.readLine();
@@ -83,14 +96,15 @@ public class TCPClient {
             	hilo.terminar();
                 
             }else if(opcion==3) {
+            	
             	clearScreen();
             	
             	cliente.setOperacion(3);
             	fromUser= PersonaJSON.objetoString(cliente);
             	out.println(fromUser);
+            	out.println("Aceptado");
             	System.out.println("Se conecto en una llamada con: "+in.readLine()+", diga 'chau' para colgar la llamada");
             	mensaje=stdIn.readLine();
-            	HiloCliente hilo= new HiloCliente(in);
             	while(!mensaje.equals("chau")){
             		out.println(mensaje);
             		mensaje=stdIn.readLine();

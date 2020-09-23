@@ -43,6 +43,7 @@ public class TCPServerHilo extends Thread {
 					
 					for (Long key : servidor.clientes.keySet()) {
 						String name = servidor.clientes.get(key).getNombre();
+						
 						if (name.equals(cliente.getDestino())) {
 							personaDestino = servidor.clientes.get(key); 
 							servidor.clientes.get(key).setDestino(cliente.getNombre());
@@ -54,6 +55,7 @@ public class TCPServerHilo extends Thread {
 					}
 					Socket socketDestino= personaDestino.getSocket();
 					PrintWriter out2 = new PrintWriter(socketDestino.getOutputStream(), true);
+					out2.println("solicitud."+cliente.getNombre());
 					while(true) {
 						mensajeEnviado=in.readLine();
 						//System.out.println("Mensaje recibido de "+cliente.getNombre()+" con el mensaje "+mensajeEnviado);
