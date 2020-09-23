@@ -73,8 +73,8 @@ public class TCPClient {
             	clearScreen();
             	
             	System.out.println("Estas en una llamada con: "+destino+", diga 'chau' para colgar la llamada");
-            	mensaje=stdIn.readLine();
             	HiloCliente hilo= new HiloCliente(in);
+            	mensaje=stdIn.readLine();
             	while(!mensaje.equals("chau")){
             		out.println(mensaje);
             		mensaje=stdIn.readLine();
@@ -89,8 +89,8 @@ public class TCPClient {
             	fromUser= PersonaJSON.objetoString(cliente);
             	out.println(fromUser);
             	System.out.println("Se conecto en una llamada con: "+in.readLine()+", diga 'chau' para colgar la llamada");
-            	mensaje=stdIn.readLine();
             	HiloCliente hilo= new HiloCliente(in);
+            	mensaje=stdIn.readLine();
             	while(!mensaje.equals("chau")){
             		out.println(mensaje);
             		mensaje=stdIn.readLine();
