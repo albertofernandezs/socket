@@ -90,8 +90,7 @@ public class TCPClient {
 				cliente.setOperacion(3);
 				fromUser = PersonaJSON.objetoString(cliente);
 				out.println(fromUser);
-				System.out.println(
-						"Se conecto en una llamada con: " + in.readLine() + ", diga 'chau' para colgar la llamada");
+				System.out.println("Se conecto en una llamada con: " + in.readLine() + ", diga 'chau' para colgar la llamada");
 				HiloCliente hilo = new HiloCliente(in);
 				mensaje = stdIn.readLine();
 				while (!mensaje.equals("chau")) {

@@ -131,11 +131,9 @@ public class TCPServerHilo extends Thread {
 
 					outputLine = "Lista de usuarios disponibles: ";
 
-					Iterator<Persona> iter = servidor.usuarios.iterator();
-
-					while (iter.hasNext()) {
-						Persona p = iter.next();
-						if (p.getDisponible() && (p.getNombre().equals(cliente.getNombre())) == false) {
+					for (Long key : servidor.clientes.keySet()) {
+						Persona p= servidor.clientes.get(key);
+						if(p.getDisponible() && (p.getNombre().equals(cliente.getNombre())) == false) {
 							System.out.println("persona" +p.getNombre()+" disponible: "+p.getDisponible());
 							outputLine = outputLine + " - " + p.getNombre();
 						}
