@@ -74,6 +74,7 @@ public class TCPServerHilo extends Thread {
 						if (origen.getDestino().equals(cliente.getNombre())) {
 							personaDestino = servidor.clientes.get(key); 
 							//System.out.println("Se agrego el socket");
+							servidor.registro(origen.getNombre(),origen.getDestino());
 							break;
 						}
 					}

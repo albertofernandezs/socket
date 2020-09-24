@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDateTime;
 
 import py.una.entidad.Persona;
 
@@ -40,6 +41,12 @@ public class TCPMultiServer {
         }
 
         serverSocket.close();
+    }
+
+    public void registro(String origen, String destino) throws FileNotFoundException {
+        PrintWriter r = new PrintWriter("registro.txt");
+        r.println(origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+"4444");
+        r.close();
     }
     
     public static void main(String[] args) throws IOException {
