@@ -47,13 +47,13 @@ public class TCPMultiServer {
         BufferedWriter bw = null;
         FileWriter fw = null;
         try {
-            File file = new File("regitro.txt");
+            File file = new File("registro.text");
             if (!file.exists()) {
                 file.createNewFile();
             }
             fw = new FileWriter(file.getAbsoluteFile(), true);
             bw = new BufferedWriter(fw);
-            bw.write(origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+"4444");
+            bw.write("\n"+origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+"4444");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
