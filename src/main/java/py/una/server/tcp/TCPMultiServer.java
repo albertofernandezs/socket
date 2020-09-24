@@ -43,11 +43,29 @@ public class TCPMultiServer {
         serverSocket.close();
     }
 
-    public void registro(String origen, String destino) throws FileNotFoundException {
-        PrintWriter r = new PrintWriter("registro.txt");
-        r.println(origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+"4444");
-        r.close();
+    public void registro(String origen, String destino){
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+            File file = new File("regitro.txt");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            fw = new FileWriter(file.getAbsoluteFile(), true);
+            bw = new BufferedWriter(fw);
+            bw.write(origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+"4444");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null) bw.close();
+                if (fw != null) fw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
+
     
     public static void main(String[] args) throws IOException {
     	
