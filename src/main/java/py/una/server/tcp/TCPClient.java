@@ -61,6 +61,8 @@ public class TCPClient {
 				fromServer = in.readLine();
 				System.out.println(fromServer);
 			} else if (opcion == 2) {
+				in=null;
+				in=new BufferedReader(new InputStreamReader(unSocket.getInputStream()));
 				System.out.println("A quien queres llamar? ");
 				destino = stdIn.readLine();
 				cliente.setOperacion(2);
@@ -69,16 +71,20 @@ public class TCPClient {
 				out.println(fromUser);
 
 				clearScreen();
-				if (in.readLine().equals("disponible")) {
+				String r=in.readLine();
+				//System.out.println("lo que se leyo en el server de op 2: "+r);
+				if (r.equals("disponible")) {
 					System.out.println("Estas en una llamada con: " + destino + ", diga 'chau' para colgar la llamada");
 					HiloCliente hilo = new HiloCliente(in);
-					mensaje = stdIn.readLine();
-					while (!mensaje.equals("chau")) {
-						out.println(mensaje);
+					
+					mensaje="";
+					while (!mensaje.equals("chau") && hilo.isDesconectar()){
 						mensaje = stdIn.readLine();
+						out.println(mensaje);
 					}
-					;
-					out.println("chau");
+					if(!hilo.isDesconectar()) {
+						out.println("chau");
+					}
 					hilo.terminar();
 				} else {
 					System.out.println("La persona ya no esta disponible");
@@ -92,13 +98,15 @@ public class TCPClient {
 				out.println(fromUser);
 				System.out.println("Se conecto en una llamada con: " + in.readLine() + ", diga 'chau' para colgar la llamada");
 				HiloCliente hilo = new HiloCliente(in);
-				mensaje = stdIn.readLine();
-				while (!mensaje.equals("chau")) {
-					out.println(mensaje);
+				
+				mensaje="";
+				while (!mensaje.equals("chau") && hilo.isDesconectar()){
 					mensaje = stdIn.readLine();
+					out.println(mensaje);
 				}
-				;
-				out.println("chau");
+				if(!hilo.isDesconectar()) {
+					out.println("chau");
+				}
 				hilo.terminar();
 
 			}

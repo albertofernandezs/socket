@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 public class HiloCliente extends Thread{
 	
 	private boolean continuar=true;
+	boolean desconectar=true;
 	private BufferedReader in;
 	
 	public HiloCliente() {
@@ -23,7 +24,14 @@ public class HiloCliente extends Thread{
 		
 		while(continuar) {
 			try {
-				System.out.println(this.in.readLine());
+				String mensaje=this.in.readLine();
+				if(mensaje.equals("chau")) {
+					System.out.println("Se ha cortado la llamada, presione enter para continuar");
+					this.desconectar=false;
+					break;
+				}else {
+					System.out.println(mensaje);
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -36,4 +44,14 @@ public class HiloCliente extends Thread{
 	public void terminar() {
 		continuar=false;
 	}
+
+	public boolean isDesconectar() {
+		return desconectar;
+	}
+
+	public void setDesconectar(boolean desconectar) {
+		this.desconectar = desconectar;
+	}
+	
+	
 }
