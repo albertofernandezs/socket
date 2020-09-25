@@ -90,8 +90,10 @@ public class TCPServerHilo extends Thread {
 					for (Long key : servidor.clientes.keySet()) {
 						origen = servidor.clientes.get(key);
 						if (origen.getDestino().equals(cliente.getNombre())) {
-							personaDestino = servidor.clientes.get(key);
-							// System.out.println("Se agrego el socket");
+
+							personaDestino = servidor.clientes.get(key); 
+							//System.out.println("Se agrego el socket");
+							servidor.registro(origen.getNombre(),origen.getDestino());
 							break;
 						}
 					}

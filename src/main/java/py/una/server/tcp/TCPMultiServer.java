@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.time.LocalDateTime;
 
 import py.una.entidad.Persona;
 
@@ -41,6 +42,30 @@ public class TCPMultiServer {
 
         serverSocket.close();
     }
+
+    public void registro(String origen, String destino){
+        BufferedWriter bw = null;
+        FileWriter fw = null;
+        try {
+            File file = new File("registro.text");
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            fw = new FileWriter(file.getAbsoluteFile(), true);
+            bw = new BufferedWriter(fw);
+            bw.write("\n"+origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+"4444");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (bw != null) bw.close();
+                if (fw != null) fw.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
     
     public static void main(String[] args) throws IOException {
     	
