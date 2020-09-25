@@ -43,17 +43,18 @@ public class TCPMultiServer {
         serverSocket.close();
     }
 
-    public void registro(String origen, String destino){
+    public void registro(String origen, String destino, Socket socket){
         BufferedWriter bw = null;
         FileWriter fw = null;
+        Integer puerto = socket.getLocalPort();
         try {
-            File file = new File("registro.text");
+            File file = new File("registro.txt");
             if (!file.exists()) {
                 file.createNewFile();
             }
             fw = new FileWriter(file.getAbsoluteFile(), true);
             bw = new BufferedWriter(fw);
-            bw.write("\n"+origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+"4444");
+            bw.write("\n"+origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+puerto);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -77,4 +78,5 @@ public class TCPMultiServer {
     	tms.ejecutar();
     	
     }
+
 }
