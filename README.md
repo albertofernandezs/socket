@@ -1,6 +1,6 @@
 # socket
 
-INTEGRANTES
+<b>INTEGRANTES</b>
 - Luis Pérez
 - Carlos Ruiz Díaz
 - Alberto fFernandez
