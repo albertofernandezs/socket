@@ -1,11 +1,11 @@
 package py.una.server.tcp;
 
 import java.net.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.time.LocalDateTime;
 
 import py.una.entidad.Persona;
 
@@ -54,7 +54,7 @@ public class TCPMultiServer {
             }
             fw = new FileWriter(file.getAbsoluteFile(), true);
             bw = new BufferedWriter(fw);
-            bw.write("\n"+origen+" "+destino+" "+ new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(java.time.LocalDateTime.now())+" "+puerto);
+            bw.write("\n"+origen+" "+destino+" "+ java.time.LocalDateTime.now()+" "+puerto);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
