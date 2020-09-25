@@ -1,24 +1,24 @@
 # socket
 
-<b>INTEGRANTES</b>
+## INTEGRANTES
 - Luis Pérez
 - Carlos Ruiz Díaz
 - Alberto fFernandez
 - Marcos Riveros
 
 
-Requerimientos de Instalacion
+## Requerimientos de Instalacion
 - Eclipse
 
-Base de Datos
+## Base de Datos
 - No se utiliza
 
-Documnetacion API de servivios del servidor
+## Documnetacion API de servivios del servidor
 
-public void ejecutar() throws IOException:
+### public void ejecutar() throws IOException:
    - Se encarga de crear el socket en el puerto 4444
   
-public void registro(String origen, String destino):
+### public void registro(String origen, String destino):
    - Metodo que se encarga de guardar en un archivo txt las llamadas realizadas con los siguintes datos:
       * Origen
       * Destino
@@ -26,7 +26,7 @@ public void registro(String origen, String destino):
       * Puerto
       * Socket
    - Parametros
-      * String: Origen
-      * String: Destino
+      * _String:_ Origen
+      * _Sring:_ Destino
       
 
