@@ -85,7 +85,7 @@ public class TCPServerHilo extends Thread {
 						if (origen.getDestino().equals(cliente.getNombre())) {
 
 							personaDestino = servidor.clientes.get(key); 
-							servidor.registro(origen.getNombre(),origen.getDestino());
+							servidor.registro(origen.getNombre(),origen.getDestino(), this.getSocket());
 							break;
 						}
 					}
@@ -146,6 +146,11 @@ public class TCPServerHilo extends Thread {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}		
+		
+	}
+	
+	public Socket getSocket() {
+		return this.socket;
 	}
 }
