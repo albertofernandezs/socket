@@ -5,7 +5,7 @@
 
 
     <groupId>py.una.pol.sd</groupId>
-    <artifactId>socket</artifactId>
+    <artifactId>servidor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
