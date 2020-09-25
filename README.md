@@ -34,7 +34,7 @@
       * _Sring:_ Destino
       * _Socket:_ socket
       
-## Insrtruciones de Uso:
+## Instruciones de Uso:
 
 ### Servidor
 - Al abrir el proyecto _"servidor"_ en el IDE elegido , selecciona el archivo en la dirección _"socket\servidor\src\main\java\py\una\server\tcp\TCPMultiserver.java"_, le da click derecho y lo ejectuta como _Java Apolication_. Si la ejecucion es exitosa muestra el mensaje "Puerto abierto 4444"
