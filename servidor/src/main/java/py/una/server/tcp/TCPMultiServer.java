@@ -54,7 +54,7 @@ public class TCPMultiServer {
             }
             fw = new FileWriter(file.getAbsoluteFile(), true);
             bw = new BufferedWriter(fw);
-            bw.write("\n"+origen+" "+destino+" "+java.time.LocalDateTime.now()+" "+puerto);
+            bw.write("\n"+origen+" "+destino+" "+ new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(java.time.LocalDateTime.now())+" "+puerto);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
