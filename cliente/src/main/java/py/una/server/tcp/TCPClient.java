@@ -109,6 +109,8 @@ public class TCPClient {
 				}
 				hilo.terminar();
 
+			} else {
+				System.out.println("Opcion no valida, por favor intentelo nuevamente.");
 			}
 
 		}
